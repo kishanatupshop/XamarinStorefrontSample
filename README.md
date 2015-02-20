@@ -17,7 +17,7 @@ To test out this sample simply clone this repo and open up the sample in Xamarin
 License
 ----
 This sample is licensed under the [MIT
-License]().
+License](https://github.com/citrix/XamarinStorefrontSample/blob/master/LICENSE.txt).
 
 Additional Information
 --------
