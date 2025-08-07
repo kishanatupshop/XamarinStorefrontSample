@@ -26,23 +26,24 @@ namespace CitrixStorefrontAPI_Android_Xamarin
 			//button.Click += delegate {
 			//	button.Text = string.Format ("{0} clicks!", count++);
 			//};
-			Button _loginButton = FindViewById<Button>(Resource.Id.btnLogin);
-			//Get the SF URL
-			EditText _storefrontURLEt = FindViewById<EditText> (Resource.Id.etSFURL);
-			string _sfURL = _storefrontURLEt.Text;
-			//get the Username
-			EditText _sfUsernameEt = FindViewById<EditText> (Resource.Id.etUsername);
-			string _sfUsername = _sfUsernameEt.Text;
-			//get the password
-			EditText _sfPasswordEt = FindViewById<EditText> (Resource.Id.etPassword);
-			string _sfPassword = _sfPasswordEt.Text;
-			//get the domain
-			EditText _sfDomainEt = FindViewById<EditText> (Resource.Id.etDomain);
-			string _sfDomain = _sfDomainEt.Text;
+                        Button _loginButton = FindViewById<Button>(Resource.Id.btnLogin);
 
-			_loginButton.Click += delegate {
-				//perform login and get credential object back
-				var _creds = CitrixHelper.AuthenticateWithPost(_sfURL,_sfUsername,_sfPassword,_sfDomain);
+                        _loginButton.Click += delegate {
+                                // Retrieve current field values when the user clicks login
+                                EditText _storefrontURLEt = FindViewById<EditText>(Resource.Id.etSFURL);
+                                string _sfURL = _storefrontURLEt.Text;
+
+                                EditText _sfUsernameEt = FindViewById<EditText>(Resource.Id.etUsername);
+                                string _sfUsername = _sfUsernameEt.Text;
+
+                                EditText _sfPasswordEt = FindViewById<EditText>(Resource.Id.etPassword);
+                                string _sfPassword = _sfPasswordEt.Text;
+
+                                EditText _sfDomainEt = FindViewById<EditText>(Resource.Id.etDomain);
+                                string _sfDomain = _sfDomainEt.Text;
+
+                                //perform login and get credential object back
+                                var _creds = CitrixHelper.AuthenticateWithPost(_sfURL,_sfUsername,_sfPassword,_sfDomain);
 				//serialize cred object into json string and pass that to new intent
 				string _authJson = Newtonsoft.Json.JsonConvert.SerializeObject(_creds);
 				//create the intent to list the available resources
